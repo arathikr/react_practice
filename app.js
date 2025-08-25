@@ -4,47 +4,36 @@ let counterName = 'One';
 root.render(<App />);
 
 function App() {
-  const counterOne = <Counter name={counterName} />;
-  const counterTwo = <Counter2 name={counterName} />;
   return (
     <>
       <h1>Counters</h1>
-      <section>{counterName === 'One' ? counterOne : counterTwo}</section>
+      <section>
+        <Counter name={counterName} />
+      </section>
     </>
   );
 }
 
-function Counter({ name }) {
+function Counter(props) {
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'INCREMENT':
+        return { count: state.count + 1 };
+      default:
+        throw new Error();
+    }
+  };
+  const [state, dispatch] = React.useReducer(reducer, { count: 0 });
   return (
     <article>
-      <h2>Counter {name}</h2>
-      <p>You clicked 1 times</p>
-      <button className='button'>Click me</button>
+      <h2>Counter {props.name}</h2>
+      <p>You clicked {state.count} times</p>
+      <button
+        className='button'
+        onClick={() => dispatch({ type: 'INCREMENT' })}
+      >
+        Click me
+      </button>
     </article>
   );
 }
-
-function Counter2({ name }) {
-  return (
-    <article>
-      <h2>Counter {name}</h2>
-      <p>Times clicked: 1</p>
-      <button className='button'>Click me</button>
-    </article>
-  );
-}
-
-function rerender() {
-  console.log('Rerender...');
-  counterName = 'Two';
-  root.render(<App />);
-}
-
-rootNode.addEventListener('click', function (event) {
-  console.log('event', event);
-  if (event.target.tagName === 'BUTTON') {
-    console.log('Clicked button');
-  } else {
-    console.log("Didn't click button");
-  }
-});
