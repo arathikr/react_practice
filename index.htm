@@ -20,7 +20,16 @@
         .counter__value {
             display: flex;
             flex-wrap: nowrap;
-            gap: 1rem
+            gap: 1rem;
+            border: none;
+            padding: 0;
+            margin: .5rem 0;
+            align-items: center;
+        }
+
+        .counter__legend {
+            padding: 0;
+            font-weight: bold;
         }
 
         .counter__value {
@@ -38,13 +47,14 @@
     <!-- <p>
         <button onclick="rerender()">Rerender</button>
     </p> -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="scripts/react.development.js"></script>
+    <script crossorigin src="scripts/react-dom.development.js"></script>
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <!-- <script src="app.js" type="text/jsx"></script> -->
     <!-- <script src="UseEffectPractice.js" type="text/jsx"></script> -->
     <!-- <script src="ComponentDesign.jsx" type="text/jsx"></script> -->
-    <script src="UseContext.jsx" type="text/jsx"></script>
+    <!-- <script src="UseContext.jsx" type="text/jsx"></script> -->
+    <script src="UseIdAndKey.jsx" type="text/babel"></script>
 </body>
 
 </html>
